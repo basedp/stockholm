@@ -1,11 +1,14 @@
 [project]
-name = "titihenry"
+name = "stockholm"
 version = "0.1.0"
-description = "Add your description here"
+description = "stonks"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
-    "fastapi[standard]>=0.141.1",
+    "fastapi[standard]~=0.141.1",
+    "pydantic~=2.13.5",
+    "python-dotenv~=1.2.3",
+    "uvicorn[standard]>=0.52.4",
 ]
 [tool.fastapi]
 entrypoint = "backend.main:app"

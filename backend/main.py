@@ -5,7 +5,23 @@ from pydantic import BaseModel, Field
 from typing import Optional
 from backend import trading
 
+#since its just plain html css
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
+
 app = FastAPI(title="Stock Order API")
+
+app.mount(
+    "/static",
+    StaticFiles(directory="frontend"),
+    name="static"
+)
+
+@app.get("/")
+def home():
+    return FileResponse("frontend/index.html")
+
+
 
 # Enable CORS so frontend (HTML/JS) can call backend endpoints
 app.add_middleware(
@@ -78,15 +94,3 @@ def submit_order(order: OrderPayload):
 
 
 
-# In main.py
-import traceback
-
-@app.post("/api/order")
-def submit_order(order: OrderPayload):
-    try:
-        # ... order logic ...
-        return {"message": "Success"}
-    except Exception as e:
-        print("Backend Error Traceback:")
-        traceback.print_exc()  # Prints the real issue to your terminal
-        raise HTTPException(status_code=400, detail=str(e)) # Returns 400 with detail instead of 500
