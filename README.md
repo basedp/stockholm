@@ -28,10 +28,9 @@ The application will usually be available at:
 http://127.0.0.1:8000
 ```
 
+If `alpaca-py` is not installed with the other dependencies, install it manually:
 
-
-
-
-
-add : uv add alpaca-py
+```
+uv add alpaca-py
+```
 
