@@ -425,3 +425,122 @@ input::placeholder {
 .max-btn:hover {
     background: rgba(59, 130, 246, 0.15);
 }
+
+/* -------------------------
+   AUTH / ACCOUNT BAR
+------------------------- */
+
+.account-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 24px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid #253047;
+}
+
+.account-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+}
+
+.user-picture {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid #334155;
+}
+
+.account-info > div {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.account-label {
+    color: #64748b;
+    font-size: 11px;
+    text-transform: uppercase;
+}
+
+#userName {
+    max-width: 260px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #f8fafc;
+    font-size: 13px;
+}
+
+.logout-button {
+    flex-shrink: 0;
+    padding: 8px 11px;
+    border: 1px solid #334155;
+    border-radius: 8px;
+    color: #cbd5e1;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 700;
+    transition: 0.2s;
+}
+
+.logout-button:hover {
+    background: #1e293b;
+    color: #f8fafc;
+}
+
+@media (max-width: 500px) {
+    .account-bar {
+        align-items: flex-start;
+    }
+
+    #userName {
+        max-width: 170px;
+    }
+}
+
+
+
+/* LOGIN PAGE */
+
+body.login-page {
+    margin: 0;
+    padding: 0;
+
+    width: 100%;
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: #0f172a;
+}
+
+.login-button {
+    display: inline-block;
+
+    padding: 14px 24px;
+
+    background: white;
+    color: #0f172a;
+
+    border: none;
+    border-radius: 8px;
+
+    text-decoration: none;
+
+    font-size: 15px;
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+.login-button:hover {
+    background: #e2e8f0;
+}
+

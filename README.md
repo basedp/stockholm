@@ -27,3 +27,11 @@ The application will usually be available at:
 ```text
 http://127.0.0.1:8000
 ```
+
+
+
+
+
+
+add : uv add alpaca-py
+

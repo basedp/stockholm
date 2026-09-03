@@ -1,4 +1,8 @@
 fastapi~=0.141.1
 pydantic~=2.13.5
 python-dotenv~=1.2.3
-uvicorn[standard]
+uvicorn[standard]~=0.52.4
+authlib~=1.8.0
+itsdangerous~=2.2.0
+httpx2~=2.12.0
+alpaca-py

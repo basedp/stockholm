@@ -2,11 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>Stock Order</title>
-    <!-- since we used staticFiles in main we have to set path to css and js to /static/...  -->
-    <link rel="stylesheet" href="/static/style.css">
+
+    <link
+        rel="stylesheet"
+        href="/static/style.css"
+    >
 </head>
 
 <body>
@@ -15,89 +22,103 @@
 
     <div class="card">
 
+        <div class="account-bar">
+
+            <div class="account-info">
+
+                <img
+                    id="userPicture"
+                    class="user-picture"
+                    alt="Google profile picture"
+                    hidden
+                >
+
+                <div>
+                    <span class="account-label">
+                        Signed in as
+                    </span>
+
+                    <strong id="userName">
+                        Loading...
+                    </strong>
+                </div>
+
+            </div>
+
+            <a
+                href="/logout"
+                class="logout-button"
+            >
+                Logout
+            </a>
+
+        </div>
+
+
         <h1>Stock Order</h1>
-        <p class="subtitle">Enter your credentials and order details.</p>
+
+        <p class="subtitle">
+            Submit paper-trading orders using the Alpaca account configured on the server.
+        </p>
+
 
         <form id="orderForm">
 
-            <!-- ID -->
-            <div class="form-group">
-                <label for="userId">ID</label>
-                <input
-                    type="text"
-                    id="userId"
-                    name="id"
-                    placeholder="Enter ID"
-                    required
-                >
-            </div>
 
-
-            <!-- API KEY -->
             <div class="form-group">
-                <label for="apiKey">API Key</label>
-                <input
-                    type="password"
-                    id="apiKey"
-                    name="api_key"
-                    placeholder="Enter API key"
-                    autocomplete="off"
-                    required
-                >
-            </div>
 
-            <!-- SECRET KEY -->
-            <div class="form-group">
-                <label for="secretKey">Secret Key</label>
-                <input
-                    type="password"
-                    id="secretKey"
-                    name="secret_key"
-                    placeholder="Enter secret key"
-                    autocomplete="off"
-                    required
-                >
-            </div>
-
-            <!-- BUY / SELL -->
-            <div class="form-group">
                 <label>Order Type</label>
 
                 <div class="order-type">
 
                     <label class="radio-option buy-option">
+
                         <input
                             type="radio"
                             name="side"
                             value="BUY"
                             checked
                         >
+
                         <span>BUY</span>
+
                     </label>
 
+
                     <label class="radio-option sell-option">
+
                         <input
                             type="radio"
                             name="side"
                             value="SELL"
                         >
+
                         <span>SELL</span>
+
                     </label>
 
                 </div>
+
             </div>
 
 
-            <!-- STOCK (SEARCHABLE) -->
             <div class="form-group">
-                <label for="stockSearch">Stock</label>
+
+                <label for="stockSearch">
+                    Stock
+                </label>
 
                 <div class="stock-row">
-                    <div class="custom-select-wrapper">
-                        <!-- Hidden input stores the actual selected value for form submission -->
-                        <input type="hidden" id="stock" name="stock" required>
 
-                        <!-- Visible input for typing and filtering -->
+                    <div class="custom-select-wrapper">
+
+                        <input
+                            type="hidden"
+                            id="stock"
+                            name="stock"
+                            required
+                        >
+
                         <input
                             type="text"
                             id="stockSearch"
@@ -105,13 +126,26 @@
                             autocomplete="off"
                         >
 
-                        <!-- Searchable Dropdown Menu -->
-                        <div id="stockDropdown" class="dropdown-menu">
-                            <div id="stockOptions" class="options-list">
-                                <div class="dropdown-item message-item">Loading stocks...</div>
+                        <div
+                            id="stockDropdown"
+                            class="dropdown-menu"
+                        >
+
+                            <div
+                                id="stockOptions"
+                                class="options-list"
+                            >
+
+                                <div class="dropdown-item message-item">
+                                    Loading stocks...
+                                </div>
+
                             </div>
+
                         </div>
+
                     </div>
+
 
                     <button
                         type="button"
@@ -121,12 +155,20 @@
                     >
                         ↻
                     </button>
+
                 </div>
+
             </div>
 
-            <!-- PRICE (optional/market order ) -->
+
             <div class="form-group">
-                <label for="price" id="priceLabel">Price (Optional - Leave blank for Market Order)</label>
+
+                <label
+                    for="price"
+                    id="priceLabel"
+                >
+                    Buy Price (Optional - Leave blank for Market Order)
+                </label>
 
                 <input
                     type="number"
@@ -136,13 +178,18 @@
                     step="0.001"
                     placeholder="Market Price (Leave empty)"
                 >
+
             </div>
 
-            <!-- AMOUNT with MAX button -->
+
             <div class="form-group">
-                <label for="amount">Amount</label>
+
+                <label for="amount">
+                    Amount
+                </label>
 
                 <div class="amount-row">
+
                     <input
                         type="number"
                         id="amount"
@@ -152,37 +199,62 @@
                         placeholder="0.00"
                         required
                     >
-                    <button type="button" id="maxAmountBtn" class="secondary-button max-btn">MAX</button>
+
+                    <button
+                        type="button"
+                        id="maxAmountBtn"
+                        class="secondary-button max-btn"
+                    >
+                        MAX
+                    </button>
+
                 </div>
+
             </div>
 
-            <!-- ORDER PREVIEW -->
-            <div id="orderPreview" class="order-preview">
+
+            <div
+                id="orderPreview"
+                class="order-preview"
+            >
+
                 <div>
                     <span>Side</span>
-                    <strong id="previewSide">BUY</strong>
+                    <strong id="previewSide">
+                        BUY
+                    </strong>
                 </div>
 
                 <div>
                     <span>Stock</span>
-                    <strong id="previewStock">—</strong>
+                    <strong id="previewStock">
+                        —
+                    </strong>
                 </div>
 
                 <div>
                     <span>Price</span>
-                    <strong id="previewPrice">0.000</strong>
+                    <strong id="previewPrice">
+                        MARKET
+                    </strong>
                 </div>
 
                 <div>
                     <span>Amount</span>
-                    <strong id="previewAmount">0.00</strong>
+                    <strong id="previewAmount">
+                        0.00
+                    </strong>
                 </div>
+
             </div>
 
-            <!-- STATUS MESSAGE -->
-            <div id="message" class="message"></div>
 
-            <!-- SUBMIT -->
+            <div
+                id="message"
+                class="message"
+            ></div>
+
+
             <button
                 type="submit"
                 id="submitButton"
